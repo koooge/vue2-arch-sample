@@ -15,7 +15,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 
-import { state } from '@/store'
+import { state, mutations } from '@/store'
 
 @Component
 export default class About extends Vue {
@@ -28,12 +28,14 @@ export default class About extends Vue {
   }
 
   updateFoo (foo: string): void {
-    state.foo = foo
+    mutations.updateFoo(foo)
   }
 
   updateBarBaz (barbaz: number): void {
-    state.bar.baz = barbaz
-    state.bar.qux = String(barbaz).split('')
+    mutations.updateBar({
+      baz: barbaz,
+      qux: String(barbaz).split('')
+    })
   }
 }
 </script>

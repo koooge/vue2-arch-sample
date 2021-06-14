@@ -15,3 +15,12 @@ export const state = Vue.observable<State>({
     qux: []
   }
 })
+
+export const mutations = {
+  updateFoo (foo: State['foo']): void {
+    state.foo = foo
+  },
+  updateBar (bar: State['bar']): void {
+    state.bar = bar
+  }
+}
