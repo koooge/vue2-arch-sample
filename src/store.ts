@@ -8,7 +8,7 @@ export type State = {
   };
 };
 
-export const state = Vue.observable<State>({
+const _state = Vue.observable<State>({
   foo: '',
   bar: {
     baz: 0,
@@ -18,9 +18,11 @@ export const state = Vue.observable<State>({
 
 export const mutations = {
   updateFoo (foo: State['foo']): void {
-    state.foo = foo
+    _state.foo = foo
   },
   updateBar (bar: State['bar']): void {
-    state.bar = bar
+    _state.bar = bar
   }
 }
+
+export const state: Readonly<State> = _state
